@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'ecom_app:Owner_login' %}">
+        {% csrf_token %}
+
+        <label for="username">&nbspUsername:</label><br>
+        <input type="text" name="username" placeholder="Username"><br>
+
+        <label for="password">Password</label><br>
+        <input type="password" name="password"><br>
+          <br>
+        <center><button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbspLogin&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+          <br><br>
+        </center>
+      </form>
+</body>
+</html>

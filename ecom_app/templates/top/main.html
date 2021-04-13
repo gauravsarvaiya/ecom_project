@@ -16,10 +16,9 @@
       <a class="navbar-brand" href="#">ECOM_FIRE*</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{% url 'ecom_app:home' %}">Home</a></li>
-      <li class="active"><a href="{% url 'ecom_app:Owner_login' %}">Login</a></li>
-      <li class="active"><a href="{% url 'ecom_app:Owner_register' %}">owner_register</a></li>
-      <li class="active" ><a href="{% url 'ecom_app:Customer_register' %}">customer_register</a></li>
+      <li class="active"><a href="{% url 'ecom_app:Main' %}">Home</a></li>
+      <li class="active"><a href="{% url 'ecom_app:index' %}">Index</a></li>
+      <li class="active"><a href="#">details</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">
@@ -27,8 +26,18 @@
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
+    <div class="navbar-left">
+        <a class="navbar-brand" href="{% url 'ecom_app:logout' %}" style="margin-left: 370px;">LOGOUT</a>
+    </div>
   </div>
 </nav>
-      <CENTER style="margin-top: 200px;"><h1>WELCOME THIS WEBSITE</h1></CENTER>
+{% block body %}
+{% endblock %}
+  <center><div class="well well-sm">PRODUCT_ADD</div></center>
+    <form method ="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit"> submit </button>
+    </form>
 </body>
 </html>

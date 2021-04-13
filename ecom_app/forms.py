@@ -11,7 +11,7 @@ class OwnerRegisterForm(forms.ModelForm):
     class Meta:
         model = OwnerRegister
         fields = '__all__'
-        exclude = ('user',)
+        exclude = ('user','is_owner')
 
 
 class UserForm(forms.ModelForm):
@@ -23,4 +23,11 @@ class CustomerRegisterForm(forms.ModelForm):
     class Meta:
         model = CustomerRegister
         fields = '__all__'
-        exclude = ('user',)
+        exclude = ('user','is_customer')
+
+class HomeForm(forms.ModelForm):
+    name = forms.CharField()
+    class Meta:
+        model = product_info
+        fields = '__all__'
+        exclude =('product_status','user')

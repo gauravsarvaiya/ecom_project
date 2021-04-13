@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load cart_template_tags %}
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">ECOM_FIRE*</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'ecom_app:customer_home' %}">HOME</a></li>
+      <li class="active"><a href="{% url 'ecom_app:index_c' %}">INDEX</a></li>
+      <li class=""><a href="#">CART</a><span style="color: white;">{{ request.user|cart_item_count }}</span></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <div class="navbar-left">
+        <a class="navbar-brand" href="{% url 'ecom_app:logout' %}" style="margin-left: 370px;">LOGOUT</a>
+    </div>
+  </div>
+</nav>
+ 
+
+<div class="container">
+    <center><h2>Product_Info</h2></center><br><hr>
+         
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>sr.no</th>
+          <th>product_name</th>
+          <th>product_prize</th>
+          <th>product_material</th>
+          <th>product_brand</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for i in big %}
+          <tr>
+             <th>{{forloop.counter}}</td>
+             <td>{{i.product_name}}</td>
+             <td>{{i.product_prize}}</td>
+             <td>{{i.product_material}}</td>
+             <td>{{i.product_brand}}</td>
+             <td><a href="{% url 'ecom_app:add_to_cart' i.id %}" class='btn btn-sm btn-primary' >add to cart</a></td>
+             
+          </tr>
+          {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

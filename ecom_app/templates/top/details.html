@@ -1,0 +1,10 @@
+<body>
+    <form>
+        {% csrf_token %}
+        {{form.as_p}}
+        {{ data.product_name }}
+        {{ data.product_prize  }}
+        {{ data.product_material }}
+        {{ data.product_brand }}
+    </form>
+</body>
